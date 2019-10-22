@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuzhenfei.model">
+
+    <!--登录case-->
+    <select id="loginCase" parameterType="Integer" resultType="com.xuzhenfei.server.model.LoginCase">
+        select id,userName,password,expected from login_case
+        where id=#{id}
+    </select>
+    <!--添加用户case-->
+    <select id="addUserCase" parameterType="Integer" resultType="com.xuzhenfei.server.model.AddUserCase">
+        select id,userName,password,gender,age,permission,isDelete,expected from add_user_case
+        where id=#{id}
+    </select>
+    <!--查询信息用户case-->
+    <select id="getUserInfoCase" parameterType="Integer" resultType="com.xuzhenfei.server.model.GetUserInfoCase">
+        select id,user_id,expected from get_user_info_case
+        where id=#{id}
+    </select>
+    <!--查询用户列表case-->
+    <select id="getUserListCase" parameterType="Integer" resultType="com.xuzhenfei.server.model.GetUserListCase">
+        select id,userName,age,gender,expected from get_user_list_case
+        where id=#{id}
+    </select>
+    <!--更新/删除用户case-->
+    <select id="updateUserInfoCase" parameterType="Integer" resultType="com.xuzhenfei.server.model.UpdateUserInfoCase">
+        select user_id,userName,gender,age,permission,isDelete,expected from update_user_info_case
+        where id=#{id}
+    </select>
+    <!--查询出添加完成后的用户信息-->
+    <select id="addUser" parameterType="com.xuzhenfei.server.model.AddUserCase" resultType="com.xuzhenfei.server.model.Users">
+        select id,userName,password,gender,age,permission,isDelete from people
+        where userName=#{userName}
+        and password=#{password}
+        and gender=#{gender}
+        and age=#{age}
+        and permission=#{permission}
+        and isDelete=#{isDelete}
+    </select>
+
+    <select id="getUserInfo" parameterType="com.xuzhenfei.server.model.GetUserInfoCase" resultType="com.xuzhenfei.server.model.Users">
+        <!-- SQL语句 -->
+        select id,userName,password,gender,age,permission,isDelete from people where
+        id=#{user_id};
+    </select>
+
+    <select id="getUserList" parameterType="com.xuzhenfei.server.model.GetUserListCase" resultType="com.xuzhenfei.server.model.Users">
+        select id,userName,password,gender,age,permission,isDelete from people
+        where gender = #{gender}
+
+    </select>
+
+    <select id="getUpdateUserInfo" parameterType="com.xuzhenfei.server.model.UpdateUserInfoCase" resultType="com.xuzhenfei.server.model.Users">
+        select id,userName,password,gender,age,permission,isDelete from people
+        <trim prefix="WHERE" prefixOverrides="and">
+
+            <if test="userName != null and userName != ''">
+                AND userName=#{userName}
+            </if>
+            <if test="gender != null and gender != ''">
+                AND gender=#{gender}
+            </if>
+            <if test="age != null and age != ''">
+                AND age=#{age}
+            </if>
+            <if test="permission != null and permission != ''">
+                AND permission=#{permission}
+            </if>
+            <if test="isDelete != null and isDelete != ''">
+                AND isDelete=#{isDelete}
+            </if>
+        </trim>
+        AND id=#{user_id}
+    </select>
+
+
+
+</mapper>

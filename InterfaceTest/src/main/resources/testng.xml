@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="用户管理系统测试套件">
+    <test name="用户管理系统测试用例">
+        <classes>
+            <class name="com.xuzhenfei.server.cases.LoginTest">
+                <methods>
+                    <method>
+                        <include name="loginTrue"/>
+                        <include name="loginFalse"/>
+                    </method>
+                </methods>
+            </class>
+            <class name="com.xuzhenfei.server.cases.AddUserTest">
+                <methods>
+                    <method>
+                        <include name="addUser"/>
+                    </method>
+                </methods>
+            </class>
+            <class name="com.xuzhenfei.server.cases.GetUserInfoTest">
+                <methods>
+                    <method>
+                        <include name="getUserInfo"/>
+                    </method>
+                </methods>
+            </class>
+            <class name="com.xuzhenfei.server.cases.UpdateUserInfoTest">
+                <methods>
+                    <method>
+                        <include name="updateUserInfo"/>
+                        <include name="deleteUser"/>
+                    </method>
+                </methods>
+            </class>
+            <class name="com.xuzhenfei.server.cases.GetUserListTest">
+                <methods>
+                    <method>
+                        <include name="getUserList"/>
+                    </method>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="com.xuzhenfei.server.config.ExtentTestNGIReporterListener"/>
+    </listeners>
+</suite>

@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+logging:
+  path: logs/
+  file: interfaceServer.log
+
+spring:
+  application:
+    name: myTest
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://114.116.225.68:3306/testhub?useSSL=false&useUnicode=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: xuzhenfei
+    password: xuzhenfei
+
+mybatis:
+  type-aliases-package: com.course.model
+  mapper-locations:
+    - mapper/*

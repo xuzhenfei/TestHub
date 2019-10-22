@@ -18,9 +18,9 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>
+                        <file>
                             ./src/main/resources/testng.xml
-                        </suiteXmlFile>
+                        </file>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

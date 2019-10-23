@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     private SqlSessionTemplate template;
     /**
-     * 用户登录传入用户信息
+     * 用户登录传入
      */
     @ApiOperation(value = "登录接口", httpMethod = "POST")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
